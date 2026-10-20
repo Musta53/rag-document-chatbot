@@ -7,24 +7,44 @@ st.set_page_config(
     layout="centered"
 )
 
-# Custom CSS for green border and button
+# Custom CSS
 st.markdown("""
 <style>
-    /* Chat input border - green and thicker */
+    /* Make the chat input container cleaner and wider */
+    div[data-testid="stChatInput"] {
+        max-width: 700px !important;
+        margin: 0 auto !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Style the actual text area */
     div[data-testid="stChatInput"] textarea {
         border: 2.5px solid #28a745 !important;
         border-radius: 12px !important;
+        padding: 12px 50px 12px 15px !important;
+        min-height: 50px !important;
+        font-size: 16px !important;
     }
 
-    /* Send button - green */
+    /* Make sure the send button stays inside on the right */
     div[data-testid="stChatInput"] button {
         background-color: #28a745 !important;
         color: white !important;
         border: none !important;
+        border-radius: 8px !important;
+        width: 38px !important;
+        height: 38px !important;
+        margin-right: 6px !important;
     }
 
     div[data-testid="stChatInput"] button:hover {
         background-color: #218838 !important;
+    }
+
+    /* Hide weird dots / artifacts */
+    div[data-testid="stChatInput"] textarea::placeholder {
+        color: transparent !important;
     }
 </style>
 """, unsafe_allow_html=True)
