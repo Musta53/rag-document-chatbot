@@ -7,44 +7,55 @@ st.set_page_config(
     layout="centered"
 )
 
-# Custom CSS
+# Stronger Custom CSS
 st.markdown("""
 <style>
-    /* Make the chat input container cleaner and wider */
+    /* Main chat input container */
     div[data-testid="stChatInput"] {
-        max-width: 700px !important;
+        border: 2.5px solid #28a745 !important;
+        border-radius: 14px !important;
+        padding: 4px !important;
+        background-color: white !important;
+        max-width: 720px !important;
         margin: 0 auto !important;
-        border: none !important;
         box-shadow: none !important;
     }
 
-    /* Style the actual text area */
-    div[data-testid="stChatInput"] textarea {
-        border: 2.5px solid #28a745 !important;
-        border-radius: 12px !important;
-        padding: 12px 50px 12px 15px !important;
-        min-height: 50px !important;
-        font-size: 16px !important;
+    /* Remove any red outline */
+    div[data-testid="stChatInput"]:focus-within {
+        border-color: #28a745 !important;
+        box-shadow: 0 0 0 1px #28a745 !important;
     }
 
-    /* Make sure the send button stays inside on the right */
+    /* Textarea inside */
+    div[data-testid="stChatInput"] textarea {
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        padding: 12px 55px 12px 16px !important;
+        font-size: 16px !important;
+        min-height: 52px !important;
+    }
+
+    /* Send button */
     div[data-testid="stChatInput"] button {
         background-color: #28a745 !important;
         color: white !important;
         border: none !important;
-        border-radius: 8px !important;
-        width: 38px !important;
-        height: 38px !important;
-        margin-right: 6px !important;
+        border-radius: 10px !important;
+        width: 40px !important;
+        height: 40px !important;
+        margin: 6px 8px 6px 0 !important;
     }
 
     div[data-testid="stChatInput"] button:hover {
         background-color: #218838 !important;
     }
 
-    /* Hide weird dots / artifacts */
+    /* Hide placeholder artifacts / dots */
     div[data-testid="stChatInput"] textarea::placeholder {
-        color: transparent !important;
+        color: #999 !important;
+        opacity: 0.7 !important;
     }
 </style>
 """, unsafe_allow_html=True)
