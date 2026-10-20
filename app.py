@@ -1,16 +1,39 @@
 import streamlit as st
 from utils.rag_pipeline import load_pdf_text, ask_question
 
-st.set_page_config(page_title="Simple RAG Chatbot", page_icon="📄")
+st.set_page_config(
+    page_title="RAG Document Chatbot",
+    page_icon="📄",
+    layout="centered"
+)
 
-st.title("📄 Simple RAG Document Chatbot")
-st.write("This version is lighter and more compatible with your system.")
+# Custom CSS for better look
+st.markdown("""
+<style>
+    /* Chat input border color and thickness */
+    .stChatInputContainer textarea {
+        border: 2px solid #28a745 !important;
+        border-radius: 10px !important;
+    }
+    
+    /* Send button color */
+    .stChatInputContainer button {
+        background-color: #28a745 !important;
+        color: white !important;
+        border: none !important;
+    }
+    
+    .stChatInputContainer button:hover {
+        background-color: #218838 !important;
+    }
+</style>
+""", unsafe_allow_html=True)
 
-# Load document text
+st.title("📄 RAG Document Chatbot")
+
+# Load document text only once
 if "context" not in st.session_state:
-    with st.spinner("Loading documents..."):
-        st.session_state.context = load_pdf_text()
-        st.success("Documents loaded!")
+    st.session_state.context = load_pdf_text()
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
