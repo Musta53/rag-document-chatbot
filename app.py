@@ -19,22 +19,33 @@ st.markdown("""
         max-width: 720px !important;
         margin: 0 auto !important;
         box-shadow: none !important;
+        outline: none !important;
     }
 
-    /* Remove any red outline */
-    div[data-testid="stChatInput"]:focus-within {
-        border-color: #28a745 !important;
-        box-shadow: 0 0 0 1px #28a745 !important;
+    /* Remove red focus outline completely */
+    div[data-testid="stChatInput"]:focus,
+    div[data-testid="stChatInput"]:focus-within,
+    div[data-testid="stChatInput"]:focus-visible {
+        border: 2.5px solid #28a745 !important;
+        outline: none !important;
+        box-shadow: none !important;
     }
 
     /* Textarea inside */
     div[data-testid="stChatInput"] textarea {
         border: none !important;
         box-shadow: none !important;
+        outline: none !important;
         background: transparent !important;
         padding: 12px 55px 12px 16px !important;
         font-size: 16px !important;
         min-height: 52px !important;
+    }
+
+    div[data-testid="stChatInput"] textarea:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border: none !important;
     }
 
     /* Send button */
@@ -50,12 +61,6 @@ st.markdown("""
 
     div[data-testid="stChatInput"] button:hover {
         background-color: #218838 !important;
-    }
-
-    /* Hide placeholder artifacts / dots */
-    div[data-testid="stChatInput"] textarea::placeholder {
-        color: #999 !important;
-        opacity: 0.7 !important;
     }
 </style>
 """, unsafe_allow_html=True)
