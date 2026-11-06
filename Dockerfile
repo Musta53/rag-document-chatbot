@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Warm the fastembed cache so first user request is fast
-RUN python -c "from fastembed import TextEmbedding; TextEmbedding(model_name='BAAI/bge-tiny-en-v1.5')" || true
+RUN python -c "from fastembed import TextEmbedding; TextEmbedding(model_name='BAAI/bge-small-en-v1.5')" || true
 
 # Render provides $PORT; HF Spaces needs 7860 — handle both
 ENV PORT=7860
