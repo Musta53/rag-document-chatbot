@@ -6,7 +6,7 @@ from pypdf import PdfReader
 from fastembed import TextEmbedding
 from groq import Groq
 
-EMBED_MODEL_NAME = os.environ.get("EMBED_MODEL_NAME", "BAAI/bge-small-en-v1.5")
+EMBED_MODEL_NAME = os.environ.get("EMBED_MODEL_NAME", "BAAI/bge-tiny-en-v1.5")
 CHUNK_WORDS, OVERLAP_WORDS = 200, 40
 PREFERRED_MODELS = [
     "openai/gpt-oss-120b", "openai/gpt-oss-20b",
