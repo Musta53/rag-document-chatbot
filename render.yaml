@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: rag-document-chatbot
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: EMBED_MODEL_NAME
+        value: BAAI/bge-small-en-v1.5
+    healthCheckPath: /

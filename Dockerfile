@@ -9,8 +9,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 7860
-
+# Warm the fastembed cache so first user request is fast
 RUN python -c "from fastembed import TextEmbedding; TextEmbedding(model_name='BAAI/bge-small-en-v1.5')" || true
 
-CMD ["chainlit", "run", "app.py", "--host", "0.0.0.0", "--port", "7860", "-h"]
+# Render provides $PORT; HF Spaces needs 7860 — handle both
+ENV PORT=7860
+EXPOSE 7860
+
+CMD chainlit run app.py --host 0.0.0.0 --port ${PORT} -h
